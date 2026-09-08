@@ -2,6 +2,7 @@
   "expo": {
     "name": "GYMVex",
     "slug": "GYMVex",
+    "owner": "bhavy-talaviya04",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -11,6 +12,8 @@
       "supportsTablet": true
     },
     "android": {
+      "package": "com.gymvex.app",
+      "versionCode": 1,
       "adaptiveIcon": {
         "backgroundColor": "#090A08",
         "foregroundImage": "./assets/images/android-icon-foreground.png",
@@ -37,7 +40,14 @@
           }
         }
       ],
-      "expo-image"
+      "expo-image",
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "The app accesses your photos to allow you to set your profile picture.",
+          "cameraPermission": "The app accesses your camera to allow you to take a profile picture."
+        }
+      ]
     ],
     "experiments": {
       "typedRoutes": true,

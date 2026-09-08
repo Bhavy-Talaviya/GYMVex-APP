@@ -12,19 +12,20 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "lint": "expo lint",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "build:apk": "eas build -p android --profile preview"
   },
   "dependencies": {
     "@expo/vector-icons": "^15.0.2",
     "@react-native-async-storage/async-storage": "2.2.0",
-    "expo": "~57.0.20",
+    "expo": "~57.0.21",
     "expo-constants": "~57.0.8",
     "expo-font": "~57.0.1",
     "expo-haptics": "~57.0.1",
     "expo-image": "~57.0.4",
     "expo-image-picker": "~57.0.16",
     "expo-linking": "~57.0.4",
-    "expo-router": "~57.0.9",
+    "expo-router": "~57.0.20",
     "expo-splash-screen": "~57.0.5",
     "expo-status-bar": "~57.0.1",
     "expo-symbols": "~57.0.1",
@@ -48,6 +49,7 @@
     "@babel/traverse": "^7.26.0",
     "@babel/types": "^7.26.0",
     "@types/react": "~19.2.0",
+    "eas-cli": "^23.2.0",
     "eslint": "^9.25.0",
     "eslint-config-expo": "~57.0.1",
     "typescript": "~6.0.3"
