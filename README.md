@@ -114,7 +114,7 @@ Track Progress
 - Flexibility
 - Yoga
 
-## 👨‍💻 Developer
+## 👨‍💻 Bhavy Talaviya:-
 
 GYMVex
 Built with ❤️ using React Native, Node.js, Express.js & MongoDB.
