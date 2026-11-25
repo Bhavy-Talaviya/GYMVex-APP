@@ -1,3 +1,4 @@
+import { StatusBar } from 'expo-status-bar';
 // ═══════════════════════════════════════════════════════════════════════
 // app/sign.tsx — GYMVex User Registration & Sign In Screen
 // ═══════════════════════════════════════════════════════════════════════
@@ -13,7 +14,6 @@ import {
   ScrollView,
   StyleSheet,
   Platform,
-  StatusBar,
   Animated,
   KeyboardAvoidingView,
   Alert,
@@ -117,7 +117,7 @@ export default function SignScreen() {
 
   return (
     <View style={styles.container}>
-      <StatusBar barStyle="light-content" translucent backgroundColor="transparent" />
+      <StatusBar style="light" />
 
       {/* Hero Athletic Background Image */}
       <Image

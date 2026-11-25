@@ -1,3 +1,4 @@
+import { StatusBar } from 'expo-status-bar';
 // ═══════════════════════════════════════════════════════════════════════
 // notification-settings.tsx — Notification & Workout Reminder Settings (GYMVex)
 // ═══════════════════════════════════════════════════════════════════════
@@ -15,7 +16,6 @@ import {
   Switch,
   ActivityIndicator,
   StyleSheet,
-  StatusBar,
   Alert,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -198,7 +198,7 @@ export default function NotificationSettingsScreen() {
 
   return (
     <SafeAreaView edges={['top']} style={[styles.safeContainer, { backgroundColor: themeColors.bg }]}>
-      <StatusBar barStyle={isDark ? 'light-content' : 'dark-content'} translucent backgroundColor="transparent" />
+      <StatusBar style={isDark ? "light" : "dark"} />
 
       {/* Top Navigation Bar */}
       <View style={[styles.navBar, { borderBottomColor: themeColors.navBorder }]}>

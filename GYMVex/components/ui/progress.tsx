@@ -3,7 +3,7 @@
 // ═══════════════════════════════════════════════════════════════════════
 
 import React from 'react';
-import { View, Text, StyleSheet, ViewStyle } from 'react-native';
+import { View, Text, StyleSheet, ViewStyle, StyleProp } from 'react-native';
 import { useAppTheme } from '@/context/ThemeContext';
 
 export interface ProgressBarProps {
@@ -11,7 +11,7 @@ export interface ProgressBarProps {
   height?: number;
   trackColor?: string;
   fillColor?: string;
-  style?: ViewStyle;
+  style?: StyleProp<any>;
 }
 
 export const ProgressBar: React.FC<ProgressBarProps> = ({
@@ -56,7 +56,7 @@ export interface CircularProgressProps {
   strokeWidth?: number;
   title?: string;
   subtitle?: string;
-  style?: ViewStyle;
+  style?: StyleProp<any>;
 }
 
 export const CircularProgress: React.FC<CircularProgressProps> = ({

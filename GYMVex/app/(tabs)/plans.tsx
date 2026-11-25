@@ -1,3 +1,4 @@
+import { StatusBar } from 'expo-status-bar';
 // ═══════════════════════════════════════════════════════════════════════
 // plans.tsx — Workout Plans Screen (GYMVex)
 // ═══════════════════════════════════════════════════════════════════════
@@ -17,7 +18,6 @@ import {
   Modal,
   ActivityIndicator,
   StyleSheet,
-  StatusBar,
   Platform,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -199,7 +199,7 @@ export default function WorkoutPlansScreen() {
 
   return (
     <SafeAreaView edges={['top']} style={[styles.safeContainer, { backgroundColor: colors.bg }]}>
-      <StatusBar barStyle={isDark ? "light-content" : "dark-content"} translucent backgroundColor="transparent" />
+      <StatusBar style={isDark ? "light" : "dark"} />
 
       {/* Top Header Bar */}
       <View style={styles.header}>

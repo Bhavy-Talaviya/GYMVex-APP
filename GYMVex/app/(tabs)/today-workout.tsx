@@ -1,3 +1,4 @@
+import { StatusBar } from 'expo-status-bar';
 // ═══════════════════════════════════════════════════════════════════════
 // today-workout.tsx — Today's Workout Screen (GYMVex)
 // ═══════════════════════════════════════════════════════════════════════
@@ -15,7 +16,6 @@ import {
   Modal,
   ActivityIndicator,
   StyleSheet,
-  StatusBar,
   Alert,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -214,7 +214,7 @@ export default function TodayWorkoutScreen() {
   if (!activePlan || userState?.status === 'none') {
     return (
       <SafeAreaView edges={['top']} style={[styles.safeContainer, { backgroundColor: colors.bg }]}>
-        <StatusBar barStyle={isDark ? "light-content" : "dark-content"} translucent backgroundColor="transparent" />
+        <StatusBar style={isDark ? "light" : "dark"} />
         <View style={styles.noPlanContainer}>
           <View style={[styles.iconCircleBig, { backgroundColor: colors.badgeBg, borderColor: colors.cardBorder }]}>
             <Ionicons name="barbell-outline" size={48} color={isDark ? "#CCFF00" : "#0F172A"} />
@@ -241,7 +241,7 @@ export default function TodayWorkoutScreen() {
   if (userState?.status === 'paused') {
     return (
       <SafeAreaView edges={['top']} style={[styles.safeContainer, { backgroundColor: colors.bg }]}>
-        <StatusBar barStyle={isDark ? "light-content" : "dark-content"} translucent backgroundColor="transparent" />
+        <StatusBar style={isDark ? "light" : "dark"} />
         <View style={styles.noPlanContainer}>
           <View style={[styles.iconCircleBig, { backgroundColor: colors.badgeBg, borderColor: colors.cardBorder }]}>
             <Ionicons name="pause-circle-outline" size={48} color={isDark ? "#CCFF00" : "#0F172A"} />
@@ -268,7 +268,7 @@ export default function TodayWorkoutScreen() {
 
   return (
     <SafeAreaView edges={['top']} style={[styles.safeContainer, { backgroundColor: colors.bg }]}>
-      <StatusBar barStyle={isDark ? "light-content" : "dark-content"} translucent backgroundColor="transparent" />
+      <StatusBar style={isDark ? "light" : "dark"} />
 
       {/* Top Header Bar */}
       <View style={styles.header}>

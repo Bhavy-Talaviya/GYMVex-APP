@@ -40,7 +40,7 @@ export default function TabLayout() {
             <Ionicons
               name={focused ? 'home' : 'home-outline'}
               size={22}
-              color={color}
+              color={color as any}
             />
           ),
         }}
@@ -54,7 +54,7 @@ export default function TabLayout() {
             <Ionicons
               name={focused ? 'calendar' : 'calendar-outline'}
               size={22}
-              color={color}
+              color={color as any}
             />
           ),
         }}
@@ -68,7 +68,7 @@ export default function TabLayout() {
             <Ionicons
               name={focused ? 'fitness' : 'fitness-outline'}
               size={22}
-              color={color}
+              color={color as any}
             />
           ),
         }}
@@ -82,7 +82,7 @@ export default function TabLayout() {
             <Ionicons
               name={focused ? 'barbell' : 'barbell-outline'}
               size={22}
-              color={color}
+              color={color as any}
             />
           ),
         }}
@@ -96,7 +96,7 @@ export default function TabLayout() {
             <Ionicons
               name={focused ? 'stats-chart' : 'stats-chart-outline'}
               size={22}
-              color={color}
+              color={color as any}
             />
           ),
         }}

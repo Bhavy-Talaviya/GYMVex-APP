@@ -1,3 +1,4 @@
+import { StatusBar } from 'expo-status-bar';
 import React, { useState, useEffect, useRef } from 'react';
 import {
   StyleSheet,
@@ -7,7 +8,6 @@ import {
   useWindowDimensions,
   Animated,
   Platform,
-  StatusBar,
   Pressable,
   NativeSyntheticEvent,
   NativeScrollEvent,
@@ -206,7 +206,7 @@ export default function OnboardingScreen() {
   if (checkingAuth) {
     return (
       <View style={styles.splashContainer}>
-        <StatusBar barStyle="light-content" translucent backgroundColor="transparent" />
+        <StatusBar style="light" />
         <View style={styles.splashContent}>
           <View style={styles.splashLogoBadge}>
             <Ionicons name="barbell" size={44} color="#B7D94C" />
@@ -221,7 +221,7 @@ export default function OnboardingScreen() {
   return (
     <View style={styles.container}>
       {/* Permanent sleek dark mode status bar for initial onboarding screen */}
-      <StatusBar barStyle="light-content" translucent backgroundColor="transparent" />
+      <StatusBar style="light" />
 
       <SafeAreaView edges={['top']} style={{ flex: 1 }}>
 

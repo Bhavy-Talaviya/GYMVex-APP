@@ -1,3 +1,4 @@
+import { StatusBar } from 'expo-status-bar';
 // ═══════════════════════════════════════════════════════════════════════
 // exercise-details.tsx — Complete Exercise Details & Workout Config Screen
 // ═══════════════════════════════════════════════════════════════════════
@@ -23,7 +24,6 @@ import {
   ActivityIndicator,
   StyleSheet,
   Platform,
-  StatusBar,
   Animated,
   Alert,
 } from 'react-native';
@@ -279,7 +279,7 @@ export default function ExerciseDetailsScreen() {
 
   return (
     <View style={[styles.container, { backgroundColor: colors.bg }]}>
-      <StatusBar barStyle={isDark ? "light-content" : "dark-content"} translucent backgroundColor="transparent" />
+      <StatusBar style={isDark ? "light" : "dark"} />
 
       <SafeAreaView edges={['top']} style={{ flex: 1 }}>
         <Animated.View style={{ flex: 1, opacity: fadeIn }}>
@@ -593,7 +593,7 @@ export default function ExerciseDetailsScreen() {
       {/* ─── Active Exercise Tracker Modal ──────────────────────── */}
       <Modal visible={showStartModal} transparent animationType="slide">
         <View style={[styles.fullModalContainer, { backgroundColor: colors.bg }]}>
-          <StatusBar barStyle={isDark ? "light-content" : "dark-content"} />
+          <StatusBar style={isDark ? "light" : "dark"} />
           <SafeAreaView edges={['top', 'bottom']} style={{ flex: 1 }}>
             <View style={[styles.fullModalHeader, { borderBottomColor: colors.cardBorder }]}>
               <Text style={[styles.fullModalTitle, { color: colors.textPrimary }]}>{exercise.name}</Text>

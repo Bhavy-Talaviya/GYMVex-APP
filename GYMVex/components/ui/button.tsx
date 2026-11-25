@@ -112,7 +112,7 @@ export function Button({
           styles.baseButton,
           getButtonStyles(),
           disabled && styles.disabledButton,
-          style,
+          (style as any),
           {
             transform: [{ scale }],
             opacity: disabled ? 0.6 : opacity,

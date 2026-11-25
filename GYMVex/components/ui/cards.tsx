@@ -19,7 +19,7 @@ import { useAppTheme } from '@/context/ThemeContext';
 export interface AppCardProps extends PressableProps {
   children: React.ReactNode;
   elevated?: boolean;
-  style?: StyleProp<ViewStyle>;
+  style?: StyleProp<any>;
   onPress?: () => void;
 }
 
@@ -153,7 +153,7 @@ export interface StatCardProps {
   unit?: string;
   icon: keyof typeof Ionicons.glyphMap;
   trend?: string;
-  style?: StyleProp<ViewStyle>;
+  style?: StyleProp<any>;
 }
 
 export const StatCard: React.FC<StatCardProps> = ({
@@ -194,7 +194,7 @@ export interface WorkoutCardProps {
   exercisesCount: number;
   progress: number;
   onPress?: () => void;
-  style?: StyleProp<ViewStyle>;
+  style?: StyleProp<any>;
 }
 
 export const WorkoutCard: React.FC<WorkoutCardProps> = ({
@@ -234,7 +234,7 @@ export interface ProgressCardProps {
   value: string;
   change?: string;
   period?: string;
-  style?: StyleProp<ViewStyle>;
+  style?: StyleProp<any>;
 }
 
 export const ProgressCard: React.FC<ProgressCardProps> = ({

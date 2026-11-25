@@ -11,6 +11,7 @@ import {
   Pressable,
   TextInputProps,
   ViewStyle,
+  StyleProp,
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useAppTheme } from '@/context/ThemeContext';
@@ -21,7 +22,7 @@ export interface AppInputProps extends TextInputProps {
   icon?: keyof typeof Ionicons.glyphMap;
   rightIcon?: keyof typeof Ionicons.glyphMap;
   onRightIconPress?: () => void;
-  containerStyle?: ViewStyle;
+  containerStyle?: StyleProp<any>;
 }
 
 export const AppInput: React.FC<AppInputProps> = ({
@@ -105,7 +106,7 @@ export interface SearchBarProps {
   onChangeText: (text: string) => void;
   placeholder?: string;
   onClear?: () => void;
-  containerStyle?: ViewStyle;
+  containerStyle?: StyleProp<any>;
 }
 
 export const SearchBar: React.FC<SearchBarProps> = ({

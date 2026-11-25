@@ -1,3 +1,4 @@
+import { StatusBar } from 'expo-status-bar';
 // ═══════════════════════════════════════════════════════════════════════
 // home.tsx — Home Screen Dashboard (GYMVex)
 // ═══════════════════════════════════════════════════════════════════════
@@ -14,7 +15,6 @@ import {
   Pressable,
   FlatList,
   StyleSheet,
-  StatusBar,
   Animated,
   useWindowDimensions,
   Modal,
@@ -336,7 +336,7 @@ export default function HomeScreen() {
 
   return (
     <View style={[styles.container, { backgroundColor: colors.bg }]}>
-      <StatusBar barStyle={isDark ? "light-content" : "dark-content"} translucent backgroundColor="transparent" />
+      <StatusBar style={isDark ? "light" : "dark"} />
 
       <SafeAreaView edges={['top']} style={{ flex: 1 }}>
         <ScrollView

@@ -11,7 +11,7 @@ export function IconSymbol({
   name: SymbolViewProps['name'];
   size?: number;
   color: string;
-  style?: StyleProp<ViewStyle>;
+  style?: StyleProp<any>;
   weight?: SymbolWeight;
 }) {
   return (

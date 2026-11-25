@@ -1,3 +1,4 @@
+import { StatusBar } from 'expo-status-bar';
 // ═══════════════════════════════════════════════════════════════════════
 // plan-details.tsx — Plan Details Screen (GYMVex)
 // ═══════════════════════════════════════════════════════════════════════
@@ -14,7 +15,6 @@ import {
   ScrollView,
   ActivityIndicator,
   StyleSheet,
-  StatusBar,
   Alert,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -164,7 +164,7 @@ export default function PlanDetailsScreen() {
 
   return (
     <SafeAreaView edges={['top']} style={[styles.safeContainer, { backgroundColor: colors.bg }]}>
-      <StatusBar barStyle={isDark ? "light-content" : "dark-content"} translucent backgroundColor="transparent" />
+      <StatusBar style={isDark ? "light" : "dark"} />
 
       {/* Top Header Navigation Bar */}
       <View style={[styles.navBar, { borderBottomColor: colors.cardBorder, backgroundColor: colors.bg }]}>

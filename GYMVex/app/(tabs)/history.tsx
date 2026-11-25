@@ -1,3 +1,4 @@
+import { StatusBar } from 'expo-status-bar';
 import React, { useState, useCallback } from 'react';
 import {
   View,
@@ -6,7 +7,6 @@ import {
   Pressable,
   ActivityIndicator,
   StyleSheet,
-  StatusBar,
   Alert,
   RefreshControl,
 } from 'react-native';
@@ -249,7 +249,7 @@ export default function WorkoutHistoryScreen() {
 
   return (
     <SafeAreaView edges={['top']} style={[styles.safeContainer, { backgroundColor: colors.bg }]}>
-      <StatusBar barStyle={isDark ? "light-content" : "dark-content"} translucent backgroundColor="transparent" />
+      <StatusBar style={isDark ? "light" : "dark"} />
 
       {/* Header Bar */}
       <View style={styles.header}>

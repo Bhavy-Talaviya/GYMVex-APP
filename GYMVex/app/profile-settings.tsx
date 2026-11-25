@@ -1,3 +1,4 @@
+import { StatusBar } from 'expo-status-bar';
 // ═══════════════════════════════════════════════════════════════════════
 // profile-settings.tsx — Profile & Settings System (GYMVex)
 // ═══════════════════════════════════════════════════════════════════════
@@ -21,7 +22,6 @@ import {
   Modal,
   ActivityIndicator,
   StyleSheet,
-  StatusBar,
   Alert,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -304,7 +304,7 @@ export default function ProfileSettingsScreen() {
 
   return (
     <SafeAreaView edges={['top']} style={[styles.safeContainer, { backgroundColor: themeColors.bg }]}>
-      <StatusBar barStyle={isDark ? 'light-content' : 'dark-content'} translucent backgroundColor="transparent" />
+      <StatusBar style={isDark ? "light" : "dark"} />
 
       {/* Top Header Bar */}
       <View style={[styles.navBar, { borderBottomColor: themeColors.navBorder }]}>

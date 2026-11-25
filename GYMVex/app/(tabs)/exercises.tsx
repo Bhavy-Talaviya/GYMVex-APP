@@ -1,3 +1,4 @@
+import { StatusBar } from 'expo-status-bar';
 // ═══════════════════════════════════════════════════════════════════════
 // exercises.tsx — Exercise Explorer Screen
 // ═══════════════════════════════════════════════════════════════════════
@@ -27,7 +28,6 @@ import {
   ActivityIndicator,
   StyleSheet,
   Platform,
-  StatusBar,
   Animated,
   RefreshControl,
 } from 'react-native';
@@ -281,7 +281,7 @@ const FilterModal = ({ visible, onClose, filters, onApply }: FilterModalProps) =
   return (
     <Modal visible={visible} animationType="slide" transparent={false}>
       <View style={[styles.modalContainer, { backgroundColor: colors.bg }]}>
-        <StatusBar barStyle={isDark ? "light-content" : "dark-content"} />
+        <StatusBar style={isDark ? "light" : "dark"} />
         <SafeAreaView edges={['top', 'bottom']} style={{ flex: 1 }}>
           {/* Modal Header */}
           <View style={[styles.modalHeader, { borderBottomColor: colors.cardBorder }]}>
@@ -605,7 +605,7 @@ export default function ExercisesScreen() {
 
   return (
     <View style={[styles.container, { backgroundColor: colors.bg }]}>
-      <StatusBar barStyle={isDark ? "light-content" : "dark-content"} translucent backgroundColor="transparent" />
+      <StatusBar style={isDark ? "light" : "dark"} />
 
       <SafeAreaView edges={['top']} style={{ flex: 1 }}>
         <Animated.View style={{ flex: 1, opacity: fadeIn }}>

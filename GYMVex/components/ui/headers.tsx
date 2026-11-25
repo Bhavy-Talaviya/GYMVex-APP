@@ -3,7 +3,7 @@
 // ═══════════════════════════════════════════════════════════════════════
 
 import React from 'react';
-import { View, Text, StyleSheet, Pressable, ViewStyle } from 'react-native';
+import { View, Text, StyleSheet, Pressable, ViewStyle, StyleProp } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { router } from 'expo-router';
 import { useAppTheme } from '@/context/ThemeContext';
@@ -14,7 +14,7 @@ export interface ScreenHeaderProps {
   showBack?: boolean;
   onBackPress?: () => void;
   rightAction?: React.ReactNode;
-  style?: ViewStyle;
+  style?: StyleProp<any>;
 }
 
 export const ScreenHeader: React.FC<ScreenHeaderProps> = ({
@@ -57,7 +57,7 @@ export interface SectionHeaderProps {
   title: string;
   actionText?: string;
   onActionPress?: () => void;
-  style?: ViewStyle;
+  style?: StyleProp<any>;
 }
 
 export const SectionHeader: React.FC<SectionHeaderProps> = ({

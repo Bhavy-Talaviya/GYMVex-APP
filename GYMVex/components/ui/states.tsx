@@ -3,14 +3,14 @@
 // ═══════════════════════════════════════════════════════════════════════
 
 import React from 'react';
-import { View, Text, StyleSheet, ActivityIndicator, ViewStyle } from 'react-native';
+import { View, Text, StyleSheet, ActivityIndicator, ViewStyle, StyleProp } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useAppTheme } from '@/context/ThemeContext';
 import { PrimaryButton } from './buttons';
 
 export interface LoadingViewProps {
   message?: string;
-  style?: ViewStyle;
+  style?: StyleProp<any>;
 }
 
 export const LoadingView: React.FC<LoadingViewProps> = ({
@@ -37,7 +37,7 @@ export interface EmptyViewProps {
   description?: string;
   actionText?: string;
   onActionPress?: () => void;
-  style?: ViewStyle;
+  style?: StyleProp<any>;
 }
 
 export const EmptyView: React.FC<EmptyViewProps> = ({
@@ -73,7 +73,7 @@ export const EmptyView: React.FC<EmptyViewProps> = ({
 export interface ErrorViewProps {
   message?: string;
   onRetry?: () => void;
-  style?: ViewStyle;
+  style?: StyleProp<any>;
 }
 
 export const ErrorView: React.FC<ErrorViewProps> = ({

@@ -42,12 +42,14 @@ export const Image = React.forwardRef<RNImage, AppImageProps>((props, ref) => {
 
   return (
     <RNImage
-      ref={ref}
+      ref={ref as any}
       resizeMode={resizeMode}
       style={[{ resizeMode }, style]}
       {...rest}
     />
   );
 });
+
+Image.displayName = 'Image';
 
 export default Image;

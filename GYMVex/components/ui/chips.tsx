@@ -9,6 +9,7 @@ import {
   Text,
   StyleSheet,
   ViewStyle,
+  StyleProp,
 } from 'react-native';
 import { useAppTheme } from '@/context/ThemeContext';
 
@@ -16,7 +17,7 @@ export interface FilterChipsProps {
   options: string[];
   selected: string;
   onSelect: (option: string) => void;
-  style?: ViewStyle;
+  style?: StyleProp<any>;
 }
 
 export const FilterChips: React.FC<FilterChipsProps> = ({
