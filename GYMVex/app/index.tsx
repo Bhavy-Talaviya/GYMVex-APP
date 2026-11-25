@@ -177,8 +177,9 @@ export default function OnboardingScreen() {
 
   // Renders a single image card in the carousel
   const renderCarouselItem = ({ item }: { item: typeof CAROUSEL_DATA[0] }) => {
-    // Dynamic height calculation (65% of screen height)
-    const cardHeight = height * 0.60;
+    // Dynamic height calculation adapted for landscape and small/large devices
+    const isLandscape = width > height;
+    const cardHeight = isLandscape ? height * 0.45 : Math.min(height * 0.52, 440);
 
     return (
       <View style={[styles.cardContainer, { width, height: cardHeight }]}>
@@ -224,7 +225,7 @@ export default function OnboardingScreen() {
 
       <SafeAreaView edges={['top']} style={{ flex: 1 }}>
 
-        {/* Top Section: Carousel area (takes up ~70% total screen room including dots) */}
+        {/* Top Section: Carousel area */}
         <Animated.View
           style={[
             styles.carouselWrapper,
@@ -301,7 +302,7 @@ export default function OnboardingScreen() {
         </Animated.View>
 
         {/* Bottom Section: Text and CTA Button */}
-        <SafeAreaView edges={['bottom']} style={styles.bottomSection}>
+        <View style={styles.bottomSection}>
           <Animated.View
             style={[
               styles.contentContainer,
@@ -312,8 +313,20 @@ export default function OnboardingScreen() {
             ]}
           >
             <View style={styles.textContainer}>
-              <Text style={styles.title}>Build Your Best Body</Text>
-              <Text style={styles.subtitle}>
+              <Text
+                style={styles.title}
+                numberOfLines={2}
+                adjustsFontSizeToFit
+                minimumFontScale={0.75}
+              >
+                Build Your Best Body
+              </Text>
+              <Text
+                style={styles.subtitle}
+                numberOfLines={3}
+                adjustsFontSizeToFit
+                minimumFontScale={0.8}
+              >
                 Train smarter, track your progress, and achieve your fitness goals.
               </Text>
             </View>
@@ -330,7 +343,7 @@ export default function OnboardingScreen() {
               </Pressable>
             </View>
           </Animated.View>
-        </SafeAreaView>
+        </View>
       </SafeAreaView>
     </View>
   );
@@ -342,7 +355,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#000000', // Premium pitch black dark background
   },
   carouselWrapper: {
-    flex: 6.2,
+    flex: 5.5,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -352,12 +365,13 @@ const styles = StyleSheet.create({
   cardContainer: {
     justifyContent: 'center',
     alignItems: 'center',
-    paddingVertical: 8,
+    paddingVertical: 4,
   },
   imageCard: {
-    width: '94%',
+    width: '92%',
+    maxWidth: 520,
     height: '92%',
-    borderRadius: 28,
+    borderRadius: 24,
     overflow: 'hidden',
     backgroundColor: '#161616',
     borderWidth: 1,
@@ -403,9 +417,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    height: 30,
-    marginTop: 14,
-    marginBottom: 8,
+    height: 24,
+    marginTop: 8,
+    marginBottom: 4,
   },
   dot: {
     height: 8,
@@ -413,31 +427,34 @@ const styles = StyleSheet.create({
     marginHorizontal: 4,
   },
   bottomSection: {
-    flex: 3.8,
+    flex: 4.5,
     backgroundColor: '#000000',
-    justifyContent: 'flex-end',
+    justifyContent: 'center',
   },
   contentContainer: {
     paddingHorizontal: 24,
-    paddingBottom: Platform.OS === 'ios' ? 10 : 20,
+    paddingBottom: Platform.OS === 'ios' ? 10 : 16,
+    maxWidth: 500,
+    width: '100%',
+    alignSelf: 'center',
   },
   textContainer: {
     alignItems: 'center',
-    marginBottom: 28,
+    marginBottom: 18,
   },
   title: {
     color: '#FFFFFF',
-    fontSize: 36,
+    fontSize: 32,
     fontWeight: '900',
     textAlign: 'center',
     letterSpacing: -0.5,
-    marginBottom: 10,
+    marginBottom: 8,
     textTransform: 'uppercase',
   },
   subtitle: {
     color: '#A0A0A0', // Muted text color for secondary readability
-    fontSize: 16,
-    lineHeight: 24,
+    fontSize: 15,
+    lineHeight: 22,
     fontWeight: '500',
     textAlign: 'center',
     paddingHorizontal: 12,

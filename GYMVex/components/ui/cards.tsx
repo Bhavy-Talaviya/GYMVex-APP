@@ -84,7 +84,7 @@ export const ExerciseCard: React.FC<ExerciseCardProps> = ({
 
   return (
     <AppCard onPress={onPress} style={{ padding: 0, overflow: 'hidden' }}>
-      <View style={{ height: 130, width: '100%', position: 'relative' }}>
+      <View style={{ height: 130, maxHeight: 180, width: '100%', position: 'relative' }}>
         <Image
           source={{
             uri:

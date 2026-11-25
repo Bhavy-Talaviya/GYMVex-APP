@@ -610,7 +610,10 @@ export default function ExerciseDetailsScreen() {
               </Pressable>
             </View>
 
-            <View style={styles.timerCenterContent}>
+            <ScrollView
+              contentContainerStyle={[styles.timerCenterContent, { flexGrow: 1, paddingVertical: 20 }]}
+              showsVerticalScrollIndicator={false}
+            >
               {/* Set Counter */}
               <Text style={[styles.activeSetLabel, { color: isDark ? "#CCFF00" : "#0F172A" }]}>SET {activeSet} OF {sets}</Text>
               <Text style={[styles.activeTargetText, { color: colors.textPrimary }]}>
@@ -672,7 +675,7 @@ export default function ExerciseDetailsScreen() {
                   </Pressable>
                 )}
               </View>
-            </View>
+            </ScrollView>
 
             {/* Bottom Complete Set Button */}
             <View style={[styles.fullModalBottom, { borderTopColor: colors.cardBorder, backgroundColor: colors.bg }]}>
@@ -816,6 +819,7 @@ const styles = StyleSheet.create({
   },
   heroMediaContainer: {
     height: 220,
+    maxHeight: 320,
     marginHorizontal: 20,
     borderRadius: 22,
     overflow: 'hidden',

@@ -7,7 +7,9 @@ import {
   StyleSheet,
   Platform,
   Animated,
+  ScrollView,
 } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { router } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
 
@@ -38,22 +40,26 @@ export default function ModalScreen() {
   };
 
   return (
-    <View style={styles.container}>
-      {/* ─── Header ────────────────────────────────────────────── */}
-      <View style={styles.header}>
-        <Text style={styles.headerTitle}>Settings</Text>
-        <Pressable
-          onPressIn={handleClosePressIn}
-          onPressOut={handleClosePressOut}
-          onPress={() => router.back()}
-        >
-          <Animated.View
-            style={[styles.closeButton, { transform: [{ scale: closeScale }] }]}
+    <SafeAreaView edges={['top', 'bottom']} style={styles.container}>
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{ flexGrow: 1, maxWidth: 540, width: '100%', alignSelf: 'center' }}
+      >
+        {/* ─── Header ────────────────────────────────────────────── */}
+        <View style={styles.header}>
+          <Text style={styles.headerTitle}>Settings</Text>
+          <Pressable
+            onPressIn={handleClosePressIn}
+            onPressOut={handleClosePressOut}
+            onPress={() => router.back()}
           >
-            <Ionicons name="close" size={20} color="#FFFFFF" />
-          </Animated.View>
-        </Pressable>
-      </View>
+            <Animated.View
+              style={[styles.closeButton, { transform: [{ scale: closeScale }] }]}
+            >
+              <Ionicons name="close" size={20} color="#FFFFFF" />
+            </Animated.View>
+          </Pressable>
+        </View>
 
       {/* ─── Settings Section ──────────────────────────────────── */}
       <View style={styles.section}>
@@ -168,7 +174,8 @@ export default function ModalScreen() {
           <Text style={styles.homeButtonText}>Go to Home</Text>
         </Pressable>
       </View>
-    </View>
+      </ScrollView>
+    </SafeAreaView>
   );
 }
 

@@ -518,8 +518,10 @@ const styles = StyleSheet.create({
     marginTop: 4,
   },
   recCard: {
-    width: 165,
-    height: 115,
+    width: 175,
+    minWidth: 150,
+    maxWidth: 220,
+    height: 120,
     borderRadius: 14,
     overflow: 'hidden',
     marginRight: 10,

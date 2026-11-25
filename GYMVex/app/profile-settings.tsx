@@ -350,8 +350,8 @@ export default function ProfileSettingsScreen() {
             <View style={[styles.metricIconWrap3D, { backgroundColor: isDark ? '#0C4A6E40' : '#E0F2FE', borderColor: isDark ? '#0284C7' : '#BAE6FD' }]}>
               <Ionicons name="resize-outline" size={20} color={isDark ? '#38BDF8' : '#0284C7'} />
             </View>
-            <Text style={[styles.metricValue, { color: themeColors.textPrimary }]}>{height} {heightUnit}</Text>
-            <Text style={[styles.metricLabel, { color: themeColors.textSecondary }]}>Height</Text>
+            <Text style={[styles.metricValue, { color: themeColors.textPrimary }]} numberOfLines={1} adjustsFontSizeToFit>{height} {heightUnit}</Text>
+            <Text style={[styles.metricLabel, { color: themeColors.textSecondary }]} numberOfLines={1}>Height</Text>
           </View>
 
           {/* Weight */}
@@ -359,8 +359,8 @@ export default function ProfileSettingsScreen() {
             <View style={[styles.metricIconWrap3D, { backgroundColor: isDark ? '#14532D40' : '#DCFCE7', borderColor: isDark ? '#22C55E' : '#BBF7D0' }]}>
               <Ionicons name="scale-outline" size={20} color={isDark ? '#4ADE80' : '#16A34A'} />
             </View>
-            <Text style={[styles.metricValue, { color: themeColors.textPrimary }]}>{weight} {weightUnit}</Text>
-            <Text style={[styles.metricLabel, { color: themeColors.textSecondary }]}>Weight</Text>
+            <Text style={[styles.metricValue, { color: themeColors.textPrimary }]} numberOfLines={1} adjustsFontSizeToFit>{weight} {weightUnit}</Text>
+            <Text style={[styles.metricLabel, { color: themeColors.textSecondary }]} numberOfLines={1}>Weight</Text>
           </View>
 
           {/* Target Weight */}
@@ -368,8 +368,8 @@ export default function ProfileSettingsScreen() {
             <View style={[styles.metricIconWrap3D, { backgroundColor: isDark ? '#7C2D1240' : '#FFEDD5', borderColor: isDark ? '#EA580C' : '#FED7AA' }]}>
               <Ionicons name="flag-outline" size={20} color={isDark ? '#FB923C' : '#EA580C'} />
             </View>
-            <Text style={[styles.metricValue, { color: themeColors.textPrimary }]}>{targetWeight} {weightUnit}</Text>
-            <Text style={[styles.metricLabel, { color: themeColors.textSecondary }]}>Target Weight</Text>
+            <Text style={[styles.metricValue, { color: themeColors.textPrimary }]} numberOfLines={1} adjustsFontSizeToFit>{targetWeight} {weightUnit}</Text>
+            <Text style={[styles.metricLabel, { color: themeColors.textSecondary }]} numberOfLines={1}>Target Weight</Text>
           </View>
 
           {/* Activity Level */}
@@ -1009,6 +1009,10 @@ const styles = StyleSheet.create({
     padding: 18,
     borderWidth: 1,
     borderColor: '#262626',
+    maxHeight: '90%',
+    maxWidth: 520,
+    width: '100%',
+    alignSelf: 'center',
   },
   modalHeader: {
     flexDirection: 'row',

@@ -298,8 +298,8 @@ export default function WorkoutHistoryScreen() {
             <View style={[styles.statIconBadge, { backgroundColor: isDark ? 'rgba(34, 197, 94, 0.15)' : '#DCFCE7' }]}>
               <Ionicons name="fitness" size={18} color="#22C55E" />
             </View>
-            <Text style={[styles.statValue, { color: colors.textPrimary }]}>{totalWorkouts}</Text>
-            <Text style={[styles.statLabel, { color: colors.textSecondary }]}>Workouts</Text>
+            <Text style={[styles.statValue, { color: colors.textPrimary }]} numberOfLines={1} adjustsFontSizeToFit>{totalWorkouts}</Text>
+            <Text style={[styles.statLabel, { color: colors.textSecondary }]} numberOfLines={1}>Workouts</Text>
           </View>
 
           {/* Total Cal Stat Card */}
@@ -307,10 +307,10 @@ export default function WorkoutHistoryScreen() {
             <View style={[styles.statIconBadge, { backgroundColor: isDark ? 'rgba(239, 68, 68, 0.15)' : '#FEE2E2' }]}>
               <Ionicons name="flame" size={18} color="#EF4444" />
             </View>
-            <Text style={[styles.statValue, { color: colors.textPrimary }]}>
+            <Text style={[styles.statValue, { color: colors.textPrimary }]} numberOfLines={1} adjustsFontSizeToFit>
               {totalCalories > 999 ? totalCalories.toLocaleString() : totalCalories}
             </Text>
-            <Text style={[styles.statLabel, { color: colors.textSecondary }]}>Total Cal</Text>
+            <Text style={[styles.statLabel, { color: colors.textSecondary }]} numberOfLines={1}>Total Cal</Text>
           </View>
 
           {/* Total Mins Stat Card */}
@@ -318,10 +318,10 @@ export default function WorkoutHistoryScreen() {
             <View style={[styles.statIconBadge, { backgroundColor: isDark ? 'rgba(2, 132, 199, 0.15)' : '#E0F2FE' }]}>
               <Ionicons name="stopwatch" size={18} color="#0284C7" />
             </View>
-            <Text style={[styles.statValue, { color: colors.textPrimary }]}>
+            <Text style={[styles.statValue, { color: colors.textPrimary }]} numberOfLines={1} adjustsFontSizeToFit>
               {totalMinutes > 999 ? totalMinutes.toLocaleString() : totalMinutes}
             </Text>
-            <Text style={[styles.statLabel, { color: colors.textSecondary }]}>Total Mins</Text>
+            <Text style={[styles.statLabel, { color: colors.textSecondary }]} numberOfLines={1}>Total Mins</Text>
           </View>
         </View>
       </View>

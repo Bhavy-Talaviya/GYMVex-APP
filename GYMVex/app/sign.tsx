@@ -383,6 +383,9 @@ const styles = StyleSheet.create({
     paddingBottom: 32,
     flexGrow: 1,
     justifyContent: 'center',
+    maxWidth: 500,
+    width: '100%',
+    alignSelf: 'center',
   },
   topBar: {
     paddingVertical: 10,

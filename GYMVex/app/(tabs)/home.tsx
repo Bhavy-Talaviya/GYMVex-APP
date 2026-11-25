@@ -218,7 +218,8 @@ export default function HomeScreen() {
 
   // ─── Workout Card Renderer ─────────────────────────────────────────
   const renderWorkoutCard = ({ item }: { item: typeof FEATURED_WORKOUTS[0] }) => {
-    const cardWidth = width * 0.68;
+    const isTabletMode = width >= 600;
+    const cardWidth = isTabletMode ? Math.min(width * 0.42, 380) : Math.max(width * 0.72, 250);
 
     return (
       <Pressable
@@ -264,7 +265,7 @@ export default function HomeScreen() {
     );
   };
 
-  const bannerWidth = width - 32;
+  const bannerWidth = Math.min(width - 32, 680);
   const [activeHeroIndex, setActiveHeroIndex] = useState<number>(0);
   const heroListRef = useRef<FlatList>(null);
 
@@ -714,6 +715,8 @@ const styles = StyleSheet.create({
   },
   heroSlideCard: {
     height: 190,
+    maxHeight: 220,
+    alignSelf: 'center',
     overflow: 'hidden',
     position: 'relative',
     borderWidth: 1,

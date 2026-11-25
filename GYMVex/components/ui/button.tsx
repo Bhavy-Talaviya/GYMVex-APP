@@ -136,12 +136,13 @@ export function Button({
 
 const styles = StyleSheet.create({
   baseButton: {
-    height: 54,
+    minHeight: 48,
     borderRadius: 12,
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'row',
-    paddingHorizontal: 24,
+    paddingVertical: 12,
+    paddingHorizontal: 20,
     ...Platform.select({
       ios: {
         shadowColor: '#B7D94C',

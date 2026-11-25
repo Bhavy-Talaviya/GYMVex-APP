@@ -472,6 +472,7 @@ const styles = StyleSheet.create({
   },
   imageContainer: {
     height: 220,
+    maxHeight: 320,
     width: '100%',
     position: 'relative',
   },
