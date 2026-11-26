@@ -8,7 +8,7 @@ import { useAppTheme } from '@/context/ThemeContext';
 
 export default function TabLayout() {
   // Access global theme colors (Light Mode default)
-  const { colors, isDark } = useAppTheme();
+  const { colors } = useAppTheme();
 
   return (
     <Tabs

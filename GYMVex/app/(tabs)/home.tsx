@@ -20,13 +20,12 @@ import {
   Modal,
   Platform,
   BackHandler,
-  Alert,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Image } from '@/components/ui/AppImage';
 import { Ionicons } from '@expo/vector-icons';
 import { router, useFocusEffect } from 'expo-router';
-import { getUserProfileData, getCurrentUserSession, markFirstLoginCompleted } from '../../services/userProfileApi';
+import { getUserProfileData, getCurrentUserSession } from '../../services/userProfileApi';
 import { useAppTheme } from '@/context/ThemeContext';
 
 // ─── Minimalist Motivation Slides (Only Image & Motivation Line) ────────

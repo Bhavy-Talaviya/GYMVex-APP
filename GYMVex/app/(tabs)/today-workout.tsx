@@ -340,8 +340,8 @@ export default function TodayWorkoutScreen() {
       {/* Session Quick Meta Stats Bar */}
       <View style={[styles.metaStatsBar, { backgroundColor: colors.cardBg, borderColor: colors.cardBorder }]}>
         <View style={styles.metaStatItem}>
-          <Text style={[styles.metaStatLabel, { color: colors.textSecondary }]}>SELECTED</Text>
-          <Text style={[styles.metaStatValue, { color: colors.textPrimary }]}>Day {selectedDayNum} / 7</Text>
+          <Text style={[styles.metaStatLabel, { color: colors.textSecondary }]}>WEEK / DAY</Text>
+          <Text style={[styles.metaStatValue, { color: colors.textPrimary }]}>W{currentWeekNumber} • Day {selectedDayNum}</Text>
         </View>
         <View style={[styles.metaStatDivider, { backgroundColor: colors.cardBorder }]} />
         <View style={styles.metaStatItem}>

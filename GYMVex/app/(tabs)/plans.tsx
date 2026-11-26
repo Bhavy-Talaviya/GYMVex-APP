@@ -6,7 +6,7 @@ import { StatusBar } from 'expo-status-bar';
 // personalized plan recommendations based on their user profile!
 // ═══════════════════════════════════════════════════════════════════════
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {
   View,
   Text,
@@ -18,7 +18,6 @@ import {
   Modal,
   ActivityIndicator,
   StyleSheet,
-  Platform,
   BackHandler,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -26,9 +25,7 @@ import { useRouter, useFocusEffect } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
 import {
   fetchWorkoutPlans,
-  fetchRecommendedPlans,
   getUserPlanState,
-  updateUserProfile,
 } from '../../services/workoutPlanApi';
 import { useAppTheme } from '@/context/ThemeContext';
 

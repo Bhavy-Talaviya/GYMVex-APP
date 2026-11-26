@@ -124,7 +124,6 @@ export default function ExerciseDetailsScreen() {
 
   // ─── Actions & Modals ─────────────────────────────────────────────
   const [isFavorite, setIsFavorite] = useState(false);
-  const [isPlayingVideo, setIsPlayingVideo] = useState(false);
   const [showStartModal, setShowStartModal] = useState(false);
   const [activeSet, setActiveSet] = useState(1);
   const [timerSeconds, setTimerSeconds] = useState(0);

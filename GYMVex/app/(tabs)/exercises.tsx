@@ -30,7 +30,6 @@ import {
   Platform,
   Animated,
   RefreshControl,
-  BackHandler,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Image } from '@/components/ui/AppImage';
@@ -129,7 +128,7 @@ type ExerciseCardProps = {
 };
 
 const ExerciseCard = ({ exercise, isFavorite, onPress, onFavorite }: ExerciseCardProps) => {
-  const { colors, isDark } = useAppTheme();
+  const { colors } = useAppTheme();
   // Get the color for the difficulty badge
   const diffColor = DIFFICULTY_COLORS[exercise.difficulty] || '#CCFF00';
 

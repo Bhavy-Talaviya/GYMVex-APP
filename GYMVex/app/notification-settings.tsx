@@ -259,6 +259,27 @@ export default function NotificationSettingsScreen() {
                 maxLength={5}
                 selectionColor={themeColors.iconColor}
               />
+
+              {/* Quick Time Presets */}
+              <View style={{ flexDirection: 'row', gap: 8, marginTop: 12 }}>
+                {TIME_PRESETS.map((preset) => (
+                  <Pressable
+                    key={preset}
+                    style={[
+                      styles.dayChip,
+                      {
+                        flex: 1,
+                        backgroundColor: reminderTime === preset ? themeColors.chipActiveBg : themeColors.chipBg,
+                        borderColor: reminderTime === preset ? themeColors.chipActiveBg : themeColors.chipBorder,
+                      },
+                    ]}
+                    onPress={() => setReminderTime(preset)}>
+                    <Text style={[styles.dayChipText, { color: reminderTime === preset ? themeColors.chipActiveText : themeColors.chipText }]}>
+                      {preset}
+                    </Text>
+                  </Pressable>
+                ))}
+              </View>
             </View>
 
             {/* ─── 3. Workout Reminder Days Selector ────────────────────── */}

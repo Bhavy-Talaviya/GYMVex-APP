@@ -18,7 +18,6 @@ import {
   TextInput,
   Pressable,
   ScrollView,
-  Switch,
   Modal,
   ActivityIndicator,
   StyleSheet,
@@ -70,7 +69,7 @@ export default function ProfileSettingsScreen() {
   const [experience, setExperience] = useState<string>('Beginner');
 
   // Global App Theme Hook (Default is Light mode)
-  const { theme, isDark, colors, setThemeMode } = useAppTheme();
+  const { isDark, colors, setThemeMode } = useAppTheme();
 
   // Modals Visibility
   const [editModalVisible, setEditModalVisible] = useState<boolean>(false);
@@ -447,6 +446,29 @@ export default function ProfileSettingsScreen() {
           </View>
           <Ionicons name="chevron-forward" size={18} color={themeColors.subText} />
         </Pressable>
+
+        {/* Appearance (Light / Dark Mode) Toggle */}
+        <View style={[styles.settingItem, { backgroundColor: themeColors.cardBg, borderColor: themeColors.cardBorder }]}>
+          <View style={[styles.settingIconWrap3D, { backgroundColor: isDark ? '#1F2937' : '#F1F5F9', borderColor: isDark ? '#374151' : '#E2E8F0' }]}>
+            <Ionicons name={isDark ? "moon" : "sunny"} size={20} color={isDark ? '#FACC15' : '#EAB308'} />
+          </View>
+          <View style={{ flex: 1, marginLeft: 12 }}>
+            <Text style={[styles.settingTitle, { color: themeColors.textPrimary }]}>Appearance</Text>
+            <Text style={[styles.settingSub, { color: themeColors.subText }]}>{isDark ? 'Dark Theme (Athletic OLED)' : 'Light Theme (Clean White)'}</Text>
+          </View>
+          <View style={[styles.unitPillContainer, { backgroundColor: themeColors.unitBg, borderColor: themeColors.unitBorder }]}>
+            <Pressable
+              style={[styles.unitPill, !isDark && { backgroundColor: themeColors.unitPillActive }]}
+              onPress={() => toggleTheme(false)}>
+              <Text style={[styles.unitPillText, !isDark ? { color: themeColors.unitPillTextActive } : { color: themeColors.unitPillTextInactive }]}>Light</Text>
+            </Pressable>
+            <Pressable
+              style={[styles.unitPill, isDark && { backgroundColor: themeColors.unitPillActive }]}
+              onPress={() => toggleTheme(true)}>
+              <Text style={[styles.unitPillText, isDark ? { color: themeColors.unitPillTextActive } : { color: themeColors.unitPillTextInactive }]}>Dark</Text>
+            </Pressable>
+          </View>
+        </View>
 
         {/* Privacy Policy */}
         <Pressable
