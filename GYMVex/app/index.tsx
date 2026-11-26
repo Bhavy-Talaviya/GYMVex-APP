@@ -17,7 +17,6 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Image } from '@/components/ui/AppImage';
 import { router, useFocusEffect } from 'expo-router';
-import { Ionicons } from '@expo/vector-icons';
 import { Button } from '@/components/ui/button';
 import { getCurrentUserSession } from '@/services/userProfileApi';
 
@@ -68,6 +67,27 @@ export default function OnboardingScreen() {
 
   // Animated scroll value for interactive pagination dots
   const scrollX = useRef(new Animated.Value(0)).current;
+
+  // Animated values for splash screen logo entrance
+  const splashFadeAnim = useRef(new Animated.Value(0)).current;
+  const splashScaleAnim = useRef(new Animated.Value(0.85)).current;
+
+  // Run smooth fade-in and scale animation for splash screen logo
+  useEffect(() => {
+    Animated.parallel([
+      Animated.timing(splashFadeAnim, {
+        toValue: 1,
+        duration: 700,
+        useNativeDriver: true,
+      }),
+      Animated.spring(splashScaleAnim, {
+        toValue: 1,
+        friction: 6,
+        tension: 40,
+        useNativeDriver: true,
+      }),
+    ]).start();
+  }, []);
 
 
   // Hardware Back Handler on Get Started screen: exit app immediately (never open dashboard or past screen)
@@ -230,11 +250,26 @@ export default function OnboardingScreen() {
       <View style={styles.splashContainer}>
         <StatusBar style="light" />
         <View style={styles.splashContent}>
-          <View style={styles.splashLogoBadge}>
-            <Ionicons name="barbell" size={44} color="#B7D94C" />
-          </View>
-          <Text style={styles.splashBrandTitle}>GYMVEX</Text>
-          <ActivityIndicator size="small" color="#B7D94C" style={{ marginTop: 24 }} />
+          <Animated.View
+            style={[
+              styles.splashLogoContainer,
+              {
+                opacity: splashFadeAnim,
+                transform: [{ scale: splashScaleAnim }],
+              },
+            ]}
+          >
+            <Image
+              source={require('@/assets/images/logo.png')}
+              style={styles.splashLogoImage}
+              contentFit="contain"
+            />
+          </Animated.View>
+          <Animated.View style={{ opacity: splashFadeAnim, alignItems: 'center' }}>
+            <Text style={styles.splashBrandTitle}>GYMVEX</Text>
+            <Text style={styles.splashTagline}>ELEVATE YOUR WORKOUT</Text>
+            <ActivityIndicator size="small" color="#B7D94C" style={{ marginTop: 28 }} />
+          </Animated.View>
         </View>
       </View>
     );
@@ -501,7 +536,7 @@ const styles = StyleSheet.create({
   },
   splashContainer: {
     flex: 1,
-    backgroundColor: '#000000',
+    backgroundColor: '#090A0C',
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -509,21 +544,41 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  splashLogoBadge: {
-    width: 88,
-    height: 88,
-    borderRadius: 26,
-    backgroundColor: 'rgba(183, 217, 76, 0.12)',
-    borderWidth: 1.5,
-    borderColor: 'rgba(183, 217, 76, 0.35)',
+  splashLogoContainer: {
+    width: 112,
+    height: 112,
+    borderRadius: 28,
     alignItems: 'center',
     justifyContent: 'center',
-    marginBottom: 16,
+    marginBottom: 20,
+    ...Platform.select({
+      ios: {
+        shadowColor: '#000000',
+        shadowOffset: { width: 0, height: 12 },
+        shadowOpacity: 0.6,
+        shadowRadius: 20,
+      },
+      android: {
+        elevation: 12,
+      },
+    }),
+  },
+  splashLogoImage: {
+    width: 112,
+    height: 112,
+    borderRadius: 28,
   },
   splashBrandTitle: {
-    color: '#B7D94C',
-    fontSize: 22,
+    color: '#F4F3ED',
+    fontSize: 26,
     fontWeight: '900',
     letterSpacing: 4,
+  },
+  splashTagline: {
+    color: '#B7D94C',
+    fontSize: 11,
+    fontWeight: '700',
+    letterSpacing: 2.5,
+    marginTop: 6,
   },
 });

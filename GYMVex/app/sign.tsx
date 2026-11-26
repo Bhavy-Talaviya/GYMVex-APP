@@ -164,7 +164,11 @@ export default function SignScreen() {
               ]}
             >
               <View style={styles.logoBadge}>
-                <Ionicons name="barbell" size={34} color="#B7D94C" />
+                <Image
+                  source={require('@/assets/images/logo.png')}
+                  style={styles.authLogoImage}
+                  contentFit="contain"
+                />
               </View>
               <Text style={styles.brandTitle}>GYMVEX</Text>
               <Text style={styles.mainTitle}>
@@ -407,24 +411,26 @@ const styles = StyleSheet.create({
     marginVertical: 18,
   },
   logoBadge: {
-    width: 72,
-    height: 72,
+    width: 76,
+    height: 76,
     borderRadius: 22,
-    backgroundColor: 'rgba(183, 217, 76, 0.12)',
-    borderWidth: 1.5,
-    borderColor: 'rgba(183, 217, 76, 0.35)',
     alignItems: 'center',
     justifyContent: 'center',
     marginBottom: 14,
     ...Platform.select({
       ios: {
-        shadowColor: '#B7D94C',
+        shadowColor: '#000000',
         shadowOffset: { width: 0, height: 8 },
-        shadowOpacity: 0.3,
+        shadowOpacity: 0.4,
         shadowRadius: 12,
       },
       android: { elevation: 6 },
     }),
+  },
+  authLogoImage: {
+    width: 76,
+    height: 76,
+    borderRadius: 22,
   },
   brandTitle: {
     color: '#B7D94C',

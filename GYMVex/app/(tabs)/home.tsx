@@ -387,13 +387,20 @@ export default function HomeScreen() {
               <Ionicons name="menu-outline" size={22} color={colors.textPrimary} />
             </Pressable>
 
-            <View style={{ flex: 1, marginLeft: 14 }}>
-              <Text style={[styles.greeting, { color: colors.textSecondary }]}>
-                {isFirstLogin ? 'Welcome 👋' : 'Welcome Back 👋'}
-              </Text>
-              <Text style={[styles.userName, { color: colors.textPrimary }]} numberOfLines={1}>
-                {userName || 'Athlete'}
-              </Text>
+            <View style={{ flexDirection: 'row', alignItems: 'center', flex: 1, marginLeft: 12 }}>
+              <Image
+                source={require('@/assets/images/logo.png')}
+                style={styles.headerLogoBadge}
+                contentFit="contain"
+              />
+              <View style={{ flex: 1 }}>
+                <Text style={[styles.greeting, { color: colors.textSecondary }]}>
+                  {isFirstLogin ? 'Welcome 👋' : 'Welcome Back 👋'}
+                </Text>
+                <Text style={[styles.userName, { color: colors.textPrimary }]} numberOfLines={1}>
+                  {userName || 'Athlete'}
+                </Text>
+              </View>
             </View>
 
             <Pressable
@@ -672,7 +679,11 @@ export default function HomeScreen() {
 
                 {/* Drawer Footer */}
                 <View style={[styles.drawerFooter, { backgroundColor: colors.cardBg, borderTopColor: colors.cardBorder }]}>
-                  <Ionicons name="flash" size={16} color={colors.accent} style={{ marginRight: 6 }} />
+                  <Image
+                    source={require('@/assets/images/logo.png')}
+                    style={styles.drawerFooterLogo}
+                    contentFit="contain"
+                  />
                   <Text style={[styles.drawerFooterText, { color: colors.textSecondary }]}>GYMVex Pro • Unleash Your Potential</Text>
                 </View>
 
@@ -1097,6 +1108,46 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     paddingVertical: 14,
     borderTopWidth: 1,
+  },
+  headerLogoBadge: {
+    width: 36,
+    height: 36,
+    borderRadius: 10,
+    marginRight: 10,
+  },
+  drawerBrandRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 16,
+  },
+  drawerBrandLogo: {
+    width: 30,
+    height: 30,
+    borderRadius: 8,
+    marginRight: 10,
+  },
+  drawerBrandTitle: {
+    fontSize: 18,
+    fontWeight: '900',
+    letterSpacing: 2,
+  },
+  drawerBrandBadge: {
+    marginLeft: 8,
+    paddingHorizontal: 7,
+    paddingVertical: 2,
+    borderRadius: 6,
+    borderWidth: 1,
+  },
+  drawerBrandBadgeText: {
+    fontSize: 10,
+    fontWeight: '800',
+    letterSpacing: 1,
+  },
+  drawerFooterLogo: {
+    width: 20,
+    height: 20,
+    borderRadius: 5,
+    marginRight: 8,
   },
   drawerFooterText: {
     fontSize: 12,

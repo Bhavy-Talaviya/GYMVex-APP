@@ -992,6 +992,28 @@ const styles = StyleSheet.create({
     borderColor: '#541717',
     marginBottom: 20,
   },
+  brandingFooterWrap: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 36,
+    marginBottom: 20,
+  },
+  brandingFooterLogo: {
+    width: 44,
+    height: 44,
+    borderRadius: 12,
+    marginBottom: 8,
+  },
+  brandingFooterTitle: {
+    fontSize: 16,
+    fontWeight: '900',
+    letterSpacing: 3,
+  },
+  brandingFooterSub: {
+    fontSize: 12,
+    fontWeight: '500',
+    marginTop: 4,
+  },
   deleteAccountBtnText: {
     color: '#FF4D4D',
     fontSize: 14,
