@@ -387,20 +387,13 @@ export default function HomeScreen() {
               <Ionicons name="menu-outline" size={22} color={colors.textPrimary} />
             </Pressable>
 
-            <View style={{ flexDirection: 'row', alignItems: 'center', flex: 1, marginLeft: 12 }}>
-              <Image
-                source={require('@/assets/images/logo.png')}
-                style={styles.headerLogoBadge}
-                contentFit="contain"
-              />
-              <View style={{ flex: 1 }}>
-                <Text style={[styles.greeting, { color: colors.textSecondary }]}>
-                  {isFirstLogin ? 'Welcome 👋' : 'Welcome Back 👋'}
-                </Text>
-                <Text style={[styles.userName, { color: colors.textPrimary }]} numberOfLines={1}>
-                  {userName || 'Athlete'}
-                </Text>
-              </View>
+            <View style={{ flex: 1, marginLeft: 14 }}>
+              <Text style={[styles.greeting, { color: colors.textSecondary }]}>
+                {isFirstLogin ? 'Welcome 👋' : 'Welcome Back 👋'}
+              </Text>
+              <Text style={[styles.userName, { color: colors.textPrimary }]} numberOfLines={1}>
+                {userName || 'Athlete'}
+              </Text>
             </View>
 
             <Pressable
@@ -1108,12 +1101,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     paddingVertical: 14,
     borderTopWidth: 1,
-  },
-  headerLogoBadge: {
-    width: 36,
-    height: 36,
-    borderRadius: 10,
-    marginRight: 10,
   },
   drawerBrandRow: {
     flexDirection: 'row',
