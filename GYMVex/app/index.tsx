@@ -17,6 +17,7 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Image } from '@/components/ui/AppImage';
 import { router, useFocusEffect } from 'expo-router';
+import * as SplashScreen from 'expo-splash-screen';
 import { Button } from '@/components/ui/button';
 import { getCurrentUserSession } from '@/services/userProfileApi';
 
@@ -72,12 +73,18 @@ export default function OnboardingScreen() {
   const splashFadeAnim = useRef(new Animated.Value(0)).current;
   const splashScaleAnim = useRef(new Animated.Value(0.85)).current;
 
-  // Run smooth fade-in and scale animation for splash screen logo
+  // Start splash screen animation and ensure guaranteed splash duration
   useEffect(() => {
+    let isMounted = true;
+
+    // Immediately hide the static native splash so our custom animated splash takes over smoothly
+    SplashScreen.hideAsync().catch(() => {});
+
+    // Smooth logo entrance: fade in and scale up with spring physics
     Animated.parallel([
       Animated.timing(splashFadeAnim, {
         toValue: 1,
-        duration: 700,
+        duration: 750,
         useNativeDriver: true,
       }),
       Animated.spring(splashScaleAnim, {
@@ -87,81 +94,84 @@ export default function OnboardingScreen() {
         useNativeDriver: true,
       }),
     ]).start();
-  }, []);
 
+    const runSplashAndAuthCheck = async () => {
+      const startTime = Date.now();
+      let targetRoute: '/(tabs)/home' | null = null;
 
-  // Hardware Back Handler on Get Started screen: exit app immediately (never open dashboard or past screen)
-  useFocusEffect(
-    React.useCallback(() => {
-      // Re-verify session whenever Get Started screen is focused
-      getCurrentUserSession().then(session => {
-        if (session && session.isLoggedIn) {
-          router.replace('/(tabs)/home');
-        }
-      });
-
-      const onBackPress = () => {
-        BackHandler.exitApp();
-        return true;
-      };
-
-      const subscription = BackHandler.addEventListener('hardwareBackPress', onBackPress);
-      return () => subscription.remove();
-    }, [])
-  );
-
-  // Check active session immediately on startup
-  useEffect(() => {
-    let isMounted = true;
-
-    const verifySession = async () => {
       try {
         const session = await getCurrentUserSession();
         if (session && session.isLoggedIn) {
-          router.replace('/(tabs)/home');
-          return;
+          targetRoute = '/(tabs)/home';
         }
       } catch (err) {
-        console.warn('Session check error:', err);
+        console.warn('Splash auth check error:', err);
       }
 
-      if (isMounted) {
-        setCheckingAuth(false);
+      // Display the animated splash screen for at least 2.2 seconds for full branding experience
+      const elapsed = Date.now() - startTime;
+      const minSplashTime = 2200;
+      if (elapsed < minSplashTime) {
+        await new Promise(resolve => setTimeout(resolve, minSplashTime - elapsed));
+      }
 
-        Animated.stagger(250, [
-          Animated.parallel([
-            Animated.timing(carouselFade, {
-              toValue: 1,
-              duration: 800,
-              useNativeDriver: true,
-            }),
-            Animated.spring(carouselSlide, {
-              toValue: 0,
-              friction: 8,
-              tension: 40,
-              useNativeDriver: true,
-            }),
-          ]),
-          Animated.parallel([
-            Animated.timing(contentFade, {
-              toValue: 1,
-              duration: 800,
-              useNativeDriver: true,
-            }),
-            Animated.spring(contentSlide, {
-              toValue: 0,
-              friction: 8,
-              tension: 40,
-              useNativeDriver: true,
-            }),
-          ]),
-        ]).start();
+      if (!isMounted) return;
 
-        startAutoplay();
+      if (targetRoute) {
+        // Smoothly fade out splash before routing to home
+        Animated.timing(splashFadeAnim, {
+          toValue: 0,
+          duration: 350,
+          useNativeDriver: true,
+        }).start(() => {
+          if (isMounted) {
+            router.replace(targetRoute!);
+          }
+        });
+      } else {
+        // Smoothly fade out splash and reveal onboarding
+        Animated.timing(splashFadeAnim, {
+          toValue: 0,
+          duration: 350,
+          useNativeDriver: true,
+        }).start(() => {
+          if (isMounted) {
+            setCheckingAuth(false);
+            Animated.stagger(250, [
+              Animated.parallel([
+                Animated.timing(carouselFade, {
+                  toValue: 1,
+                  duration: 800,
+                  useNativeDriver: true,
+                }),
+                Animated.spring(carouselSlide, {
+                  toValue: 0,
+                  friction: 8,
+                  tension: 40,
+                  useNativeDriver: true,
+                }),
+              ]),
+              Animated.parallel([
+                Animated.timing(contentFade, {
+                  toValue: 1,
+                  duration: 800,
+                  useNativeDriver: true,
+                }),
+                Animated.spring(contentSlide, {
+                  toValue: 0,
+                  friction: 8,
+                  tension: 40,
+                  useNativeDriver: true,
+                }),
+              ]),
+            ]).start();
+            startAutoplay();
+          }
+        });
       }
     };
 
-    verifySession();
+    runSplashAndAuthCheck();
 
     return () => {
       isMounted = false;
@@ -268,7 +278,7 @@ export default function OnboardingScreen() {
           <Animated.View style={{ opacity: splashFadeAnim, alignItems: 'center' }}>
             <Text style={styles.splashBrandTitle}>GYMVEX</Text>
             <Text style={styles.splashTagline}>ELEVATE YOUR WORKOUT</Text>
-            <ActivityIndicator size="small" color="#B7D94C" style={{ marginTop: 28 }} />
+            <ActivityIndicator size="small" color="#B7D94C" style={{ marginTop: 32 }} />
           </Animated.View>
         </View>
       </View>
@@ -545,40 +555,40 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   splashLogoContainer: {
-    width: 112,
-    height: 112,
-    borderRadius: 28,
+    width: 120,
+    height: 120,
+    borderRadius: 30,
     alignItems: 'center',
     justifyContent: 'center',
-    marginBottom: 20,
+    marginBottom: 24,
     ...Platform.select({
       ios: {
         shadowColor: '#000000',
-        shadowOffset: { width: 0, height: 12 },
-        shadowOpacity: 0.6,
-        shadowRadius: 20,
+        shadowOffset: { width: 0, height: 16 },
+        shadowOpacity: 0.7,
+        shadowRadius: 24,
       },
       android: {
-        elevation: 12,
+        elevation: 14,
       },
     }),
   },
   splashLogoImage: {
-    width: 112,
-    height: 112,
-    borderRadius: 28,
+    width: 120,
+    height: 120,
+    borderRadius: 30,
   },
   splashBrandTitle: {
-    color: '#F4F3ED',
-    fontSize: 26,
+    color: '#FFFFFF',
+    fontSize: 28,
     fontWeight: '900',
-    letterSpacing: 4,
+    letterSpacing: 5,
   },
   splashTagline: {
     color: '#B7D94C',
-    fontSize: 11,
+    fontSize: 12,
     fontWeight: '700',
-    letterSpacing: 2.5,
-    marginTop: 6,
+    letterSpacing: 3,
+    marginTop: 8,
   },
 });

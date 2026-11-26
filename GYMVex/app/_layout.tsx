@@ -8,6 +8,12 @@
 import { DarkTheme, DefaultTheme, ThemeProvider as NavThemeProvider, Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import 'react-native-reanimated';
+import * as SplashScreen from 'expo-splash-screen';
+
+// Keep native splash screen visible while app resources initialize
+SplashScreen.preventAutoHideAsync().catch(() => {});
+
+
 
 // Import global theme context and custom hook
 import { ThemeProvider, useAppTheme } from '@/context/ThemeContext';
