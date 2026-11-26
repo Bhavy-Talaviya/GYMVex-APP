@@ -1,4 +1,4 @@
-# 🏋️ GYMVex — Modern Gym & Fitness Mobile Application
+# 🏋️ GYMVex — Gym & Fitness Mobile Application
 
 [![React Native](https://img.shields.io/badge/React_Native-0.88-61DAFB?style=flat&logo=react&logoColor=black)](https://reactnative.dev/)
 [![Expo SDK](https://img.shields.io/badge/Expo_SDK-58.0.5-000020?style=flat&logo=expo&logoColor=white)](https://expo.dev/)
@@ -8,25 +8,6 @@
 
 > **Train. Track. Transform.**  
 > GYMVex is an athletic mobile fitness application built with React Native and Expo, powered by an Express.js & MongoDB backend. It delivers curated workout plans, real-time exercise set trackers, interactive rest timers, personalized health metrics, and seamless Dark/Light theme switching.
-
----
-
-## 📋 Table of Contents
-
-- [Overview](#-overview)
-- [Actual Project Features](#-actual-project-features)
-- [Technologies & Stack](#-technologies--stack)
-- [Project Architecture & Folder Structure](#-project-architecture--folder-structure)
-- [Prerequisites](#-prerequisites)
-- [Installation & Setup](#-installation--setup)
-- [Environment Configuration](#-environment-configuration)
-- [Available NPM Scripts](#-available-npm-scripts)
-- [Backend REST API Reference](#-backend-rest-api-reference)
-- [App Flow & Screens](#-app-flow--screens)
-- [Screenshots & UI Showcase](#-screenshots--ui-showcase)
-- [Future Improvements](#-future-improvements)
-- [Contribution Guidelines](#-contribution-guidelines)
-- [Author & License](#-author--license)
 
 ---
 
@@ -324,17 +305,6 @@ Base URL (Production): `https://gymvex-app.onrender.com/api`
 
 ---
 
-## 📸 Screenshots & UI Showcase
-
-| Splash Screen | Onboarding Carousel | Athlete Dashboard |
-| :---: | :---: | :---: |
-| Centered 3D dumbbell with spring scale & dark gradient | High-res motivational fitness slides & tag capsules | Daily quotes, quick actions, categories & drawer |
-
-| Today's Workout Tracker | Exercise Directory | Profile & Unit Preferences |
-| :---: | :---: | :---: |
-| Set checkboxes, rest timer & live progress bar | 60+ exercises with difficulty badges & instant search | Light/Dark theme toggle & metric/imperial switches |
-
----
 
 ## 🔮 Future Improvements
 
