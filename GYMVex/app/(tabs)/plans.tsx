@@ -19,6 +19,7 @@ import {
   ActivityIndicator,
   StyleSheet,
   Platform,
+  BackHandler,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useRouter, useFocusEffect } from 'expo-router';
@@ -84,6 +85,19 @@ export default function WorkoutPlansScreen() {
   const [showFilterModal, setShowFilterModal] = useState<boolean>(false);
 
   // Load plans & user data on screen focus or when filters change
+  
+  // Hardware Back Handler: return to Home tab
+  useFocusEffect(
+    React.useCallback(() => {
+      const onBackPress = () => {
+        router.replace('/(tabs)/home');
+        return true;
+      };
+      const sub = BackHandler.addEventListener('hardwareBackPress', onBackPress);
+      return () => sub.remove();
+    }, [router])
+  );
+
   useFocusEffect(
     React.useCallback(() => {
       loadData();

@@ -9,11 +9,12 @@ import {
   StyleSheet,
   Alert,
   RefreshControl,
+  BackHandler,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Image } from '@/components/ui/AppImage';
 import { Ionicons } from '@expo/vector-icons';
-import { useFocusEffect } from 'expo-router';
+import { router, useFocusEffect } from 'expo-router';
 import {
   getWorkoutHistory,
   getUserPlanState,
@@ -48,6 +49,19 @@ export default function WorkoutHistoryScreen() {
   const [userState, setUserState] = useState<UserPlanState | null>(null);
 
   // Reload history and state every time screen comes into focus
+  
+  // Hardware Back Handler: return to Home tab
+  useFocusEffect(
+    React.useCallback(() => {
+      const onBackPress = () => {
+        router.replace('/(tabs)/home');
+        return true;
+      };
+      const sub = BackHandler.addEventListener('hardwareBackPress', onBackPress);
+      return () => sub.remove();
+    }, [router])
+  );
+
   useFocusEffect(
     useCallback(() => {
       loadHistory();

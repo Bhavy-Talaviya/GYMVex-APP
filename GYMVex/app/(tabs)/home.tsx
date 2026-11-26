@@ -19,6 +19,8 @@ import {
   useWindowDimensions,
   Modal,
   Platform,
+  BackHandler,
+  Alert,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Image } from '@/components/ui/AppImage';
@@ -128,6 +130,24 @@ export default function HomeScreen() {
   const drawerWidth = Math.min(width * 0.85, 340);
   const drawerAnim = useRef(new Animated.Value(-drawerWidth)).current;
   const overlayAnim = useRef(new Animated.Value(0)).current;
+
+  
+  // Hardware Back Handler on Home Screen: close drawer if open, otherwise exit app cleanly
+  useFocusEffect(
+    React.useCallback(() => {
+      const onBackPress = () => {
+        if (menuVisible) {
+          closeDrawer();
+          return true;
+        }
+        BackHandler.exitApp();
+        return true;
+      };
+
+      const subscription = BackHandler.addEventListener('hardwareBackPress', onBackPress);
+      return () => subscription.remove();
+    }, [menuVisible])
+  );
 
   const openDrawer = () => {
     loadProfileAvatar();
@@ -472,7 +492,7 @@ export default function HomeScreen() {
             <View style={styles.sectionHeader}>
               <Text style={[styles.sectionTitle, { color: colors.textPrimary }]}>Categories</Text>
               <Pressable
-                onPress={() => router.push({ pathname: '/exercises', params: { category: 'All' } })}
+                onPress={() => router.push({ pathname: '/(tabs)/exercises', params: { category: 'All' } })}
                 style={({ pressed }) => ({ opacity: pressed ? 0.6 : 1 })}>
                 <Text style={[styles.seeAllText, { color: colors.accent }]}>See All</Text>
               </Pressable>
@@ -490,7 +510,7 @@ export default function HomeScreen() {
                 return (
                   <Pressable
                     key={cat.id}
-                    onPress={() => router.push({ pathname: '/exercises', params: { category: cat.category } })}
+                    onPress={() => router.push({ pathname: '/(tabs)/exercises', params: { category: cat.category } })}
                     onPressIn={() => setPressedCategory(cat.id)}
                     onPressOut={() => setPressedCategory(null)}
                     style={[

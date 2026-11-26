@@ -17,6 +17,7 @@ import {
   ActivityIndicator,
   StyleSheet,
   Alert,
+  BackHandler,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useRouter, useFocusEffect } from 'expo-router';
@@ -48,6 +49,19 @@ export default function TodayWorkoutScreen() {
   const [showRestModal, setShowRestModal] = useState<boolean>(false);
 
   // Reload data on focus
+  
+  // Hardware Back Handler: return to Home tab
+  useFocusEffect(
+    React.useCallback(() => {
+      const onBackPress = () => {
+        router.replace('/(tabs)/home');
+        return true;
+      };
+      const sub = BackHandler.addEventListener('hardwareBackPress', onBackPress);
+      return () => sub.remove();
+    }, [router])
+  );
+
   useFocusEffect(
     useCallback(() => {
       loadTodayData();
