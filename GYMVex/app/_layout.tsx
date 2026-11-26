@@ -12,10 +12,6 @@ import 'react-native-reanimated';
 // Import global theme context and custom hook
 import { ThemeProvider, useAppTheme } from '@/context/ThemeContext';
 
-export const unstable_settings = {
-  anchor: '(tabs)',
-};
-
 // Inner Root component that subscribes to global theme state
 function RootLayoutContent() {
   const { isDark } = useAppTheme();

@@ -12,10 +12,11 @@ import {
   NativeSyntheticEvent,
   NativeScrollEvent,
   ActivityIndicator,
+  BackHandler,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Image } from '@/components/ui/AppImage';
-import { router } from 'expo-router';
+import { router, useFocusEffect } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
 import { Button } from '@/components/ui/button';
 import { getCurrentUserSession } from '@/services/userProfileApi';
@@ -67,6 +68,27 @@ export default function OnboardingScreen() {
 
   // Animated scroll value for interactive pagination dots
   const scrollX = useRef(new Animated.Value(0)).current;
+
+
+  // Hardware Back Handler on Get Started screen: exit app immediately (never open dashboard or past screen)
+  useFocusEffect(
+    React.useCallback(() => {
+      // Re-verify session whenever Get Started screen is focused
+      getCurrentUserSession().then(session => {
+        if (session && session.isLoggedIn) {
+          router.replace('/(tabs)/home');
+        }
+      });
+
+      const onBackPress = () => {
+        BackHandler.exitApp();
+        return true;
+      };
+
+      const subscription = BackHandler.addEventListener('hardwareBackPress', onBackPress);
+      return () => subscription.remove();
+    }, [])
+  );
 
   // Check active session immediately on startup
   useEffect(() => {

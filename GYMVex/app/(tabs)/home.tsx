@@ -191,6 +191,10 @@ export default function HomeScreen() {
   const loadProfileAvatar = async () => {
     try {
       const session: any = await getCurrentUserSession();
+      if (!session || !session.isLoggedIn) {
+        router.replace('/');
+        return;
+      }
       if (session) {
         if (session.name) setUserName(session.name);
         if (session.email) setUserEmail(session.email);
