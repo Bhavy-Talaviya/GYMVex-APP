@@ -3,6 +3,7 @@
   "main": "expo-router/entry",
   "version": "1.0.0",
   "scripts": {
+    "dev": "expo start --go --tunnel -c",
     "start": "expo start --go",
     "tunnel": "expo start --go --tunnel -c",
     "server": "node backend/server.js",
