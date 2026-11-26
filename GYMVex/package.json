@@ -3,7 +3,8 @@
   "main": "expo-router/entry",
   "version": "1.0.0",
   "scripts": {
-    "start": "expo start",
+    "start": "expo start --go",
+    "tunnel": "expo start --go --tunnel -c",
     "server": "node backend/server.js",
     "backend": "node backend/server.js",
     "reset:db": "node backend/seed/resetAllData.js",
@@ -21,7 +22,6 @@
     "@react-native-async-storage/async-storage": "2.2.0",
     "expo": "58.0.5",
     "expo-constants": "~58.0.10",
-    "expo-dev-client": "~58.0.21",
     "expo-font": "~58.0.7",
     "expo-haptics": "~58.0.5",
     "expo-image": "~58.0.12",
